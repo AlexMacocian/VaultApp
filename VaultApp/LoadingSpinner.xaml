@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="VaultApp.LoadingSpinner"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="50">
+    <Viewbox Stretch="Fill">
+        <Grid>
+            <Grid.RenderTransform>
+                <RotateTransform Angle="0"></RotateTransform>
+            </Grid.RenderTransform>
+            <Grid.RenderTransformOrigin>
+                <Point X="0.5" Y="0.5"></Point>
+            </Grid.RenderTransformOrigin>
+            <Grid.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(Grid.RenderTransform).(RotateTransform.Angle)" To="360" Duration="0:0:1" RepeatBehavior="Forever"></DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Grid.Triggers>
+            <Polygon x:Name="Figure" Points="0.09846135616985485,21.4465389251709 0.09846135616985485,15.060473442077637 6.633094024679249,15.060473442077637 0.09846135616985485,21.4465389251709" Fill="DodgerBlue"></Polygon>
+            <Path Data="m21.89146,11.14369a10.89105,10.64344 0 0 1 -20.36627,5.25786" Stroke="{Binding ElementName=Figure, Path=Fill}"></Path>
+            <Polygon Points="21.880568949703243,0.553460419178009 21.880568949703243,6.939526081085205 15.345935542102293,6.939526081085205 21.880568949703243,0.553460419178009" Fill="{Binding ElementName=Figure, Path=Fill}"></Polygon>
+            <Path Data="m0.08757,10.85631a10.89105,10.64344 0 0 1 20.36627,-5.25786" Stroke="{Binding ElementName=Figure, Path=Fill}"></Path>
+        </Grid>
+    </Viewbox>
+</UserControl>
